@@ -4,7 +4,7 @@
 }
 
 @font-face {
-    font-family: "barlow condense";
+    font-family: "barlow condense light";
     src: url("../sidan/fonts/Barlow_Condensed/BarlowCondensed-Light.ttf");
 }
 
@@ -24,6 +24,7 @@
 }
 
 /* använder height: 200vh för få scroll, bakgrundsbilder stannar bakom eftersom vi har background-attachment. tar man bort background-attachment så skulle bilden bara vara jätte inzoomad och det blir scroll i bakgrundsbilder*/
+
 body {
     margin: 0;
 
@@ -38,16 +39,16 @@ body {
     justify-content: center;
 }
 
-/*skapar höjd 90vh för att få margin*/
+/*Heiht:100%; Ta bort height gör ingen skillnad. Höjden styrs av innehållet*/
 
-#wrapper {
+div#wrapper {
     background-color: rgba(0, 0, 0, 0.3);
-    height: 95%;
-    width: 80vw;
+
+    margin: 5vw 10vw;
     border-radius: 10px;
 }
 
-h1 {
+header h1 {
     color: rgba(255, 255, 255, 0.7);
     font-family: "bungee shade";
     font-size: 6vw;
@@ -64,21 +65,22 @@ nav {
     margin: 5vw 2vw;
 }
 
-a {
+/* flex-basis gör att alla rutor blir lika stora. Flex-grow gör att alla rutor stretchas ut så mycket dem får plats*/
+nav>a {
     text-decoration: none;
     color: black;
     background-color: rgba(255, 255, 255, 0.6);
-    font-family: "barlow condense";
+    font-family: "barlow condense light";
     font-size: 2vw;
 
-    padding: 1.5vw;
+    padding: 1vw;
     flex-basis: 0;
     flex-grow: 1;
     text-align: center;
     border-radius: 10px;
 }
 
-a:hover {
+nav>a:hover {
     background-color: rgba(0, 0, 0, 0.5);
     color: rgba(255, 255, 255, 0.8);
 }
@@ -86,7 +88,7 @@ a:hover {
 /*lägger in samma color och background-color som i min "a" för att det inte ska byta färg när jag håller musen över den
 lägger till box-shadow för att det ska lysa bakom. sökte på google
 background-attachment bestämmer om bakgrundbilden ska vara fast, scroll osv*/
-a:nth-child(2) {
+nav>a:nth-child(2) {
     border: 1px solid white;
     font-family: "barlow condense bold";
     color: black;
@@ -104,30 +106,185 @@ main {
     flex-direction: column;
 }
 
-/**/
-section {
+main>section {
     border: 1px solid rgba(255, 255, 255, 0.8);
     margin: 1vw 2vw;
     border-radius: 20px;
-    flex-grow: 1;
     background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+
+main section div.top-row {
+    display: flex;
+
+    gap: 1vw;
+    margin: 1vw;
+}
+
+main section div.content {
+    width: 60%;
     color: rgba(255, 255, 255, 0.8);
+
+    display: flex;
+    flex-direction: column;
 }
 
-h2 {
-    font-family: bungee outline;
-}
 
-h3 {
-    font-family: barlow semi condense
-}
-
-ul {
+/*anger font-size i vw för att det ska anpassa sig*/
+div.content h2 {
     margin: 0;
+    font-family: "bungee outline";
+    font-size: 2.5vw;
 }
 
-.content {
+div.content h3 {
+    font-family: "barlow semi condense";
+    font-size: 2vw;
+
+    margin-top: 0.5vw;
+}
+
+main section div.album {
+    width: 40%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+
+}
+
+/*100% av 40% (bredden av sin förälder) vilket gör att den även blir proportionelig, annars hade den blivit jätteinzoomad*/
+main section div.album img {
+    width: 100%;
+
+    border-radius: 10px 10px 0 0;
+}
+
+main section div .album .list-box {
+    display: flex;
+    gap: 1vw;
+    width: 100%;
+}
+
+/*flexbasis gör att dem två gula boxarna blir lika stora oavsett innehåll.
+Flex-basis läggs alltid på barnet
+flex-grow för att ta ut 100% av sin förälders bredd*/
+.list-box ol {
+    background-color: #eecb00;
+    color: #cf62ab;
+
+    flex-basis: 0;
+    flex-grow: 1;
+
+    font-size: 1vw;
+
+    margin: 0;
+    padding: 2vw;
+}
+
+.list-box ol:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.list-box ol:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+div.content p:first-of-type {
+    margin-bottom: 0;
+}
+
+div.content ul {
+    margin-top: 0;
+    list-style-type: none;
+}
+
+.content ul,
+.content p {
+    font-family: "barlow condense light";
+    font-size: 1.5vw;
+}
+
+h4 {
+    margin-bottom: 0;
+}
+
+/* börjar med bottom-row och gör den till en grid*/
+main section div.bottom-row {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr;
+
+    gap: 0.5vw;
+    margin: 1vw;
+}
+
+main section div.bottom-row p:first-child {
+    background-color: #bc559a;
+    color: #ddbc00;
+
+    grid-column: 1;
+    grid-row: 1;
+    border-radius: 10px 0 10px 10px;
+}
+
+main section div.bottom-row p:nth-child(2) {
+    background-color: #bc559a;
+    color: #ddbc00;
+
+    grid-column: 3 / span 2;
+    grid-row: 1;
+    border-radius: 10px 10px 10px 0;
+}
+
+main section div.bottom-row img {
+    grid-column: 5;
+    grid-row: 1;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 0 10px 10px 10px;
+}
+
+.bottom-row p:nth-child(4) {
+    grid-column: 5;
+    grid-row: 1;
+
+    z-index: 1;
+    color: white;
+    align-self: end;
+
+}
+
+.bottom-row p:nth-child(5) {
+    background-color: #bc559a;
+    color: #ddbc00;
+
+    grid-column: 6;
+    grid-row: 1;
+
+    border-radius: 10px 10px 0 10px;
+}
+
+.bottom-row p {
+    margin: 0;
+    font-size: 1.5vw;
+    font-family: "barlow condense light";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vw;
+}
+
+/*10/10 tillsammans*/
+
+.album li {
+    margin-left: 1vw;
+}
+
+.album ol h4 {
+    font-size: 1.5vw;
+    font-family: "barlow condense light";
 }
