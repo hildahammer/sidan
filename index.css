@@ -23,6 +23,7 @@
     src: url("../sidan/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Bold.ttf");
 }
 
+/*--------BODY--------*/
 body {
     margin: 0;
 
@@ -37,8 +38,7 @@ body {
     align-items: center;
 }
 
-/*Heiht:100%; Ta bort height gör ingen skillnad. Höjden styrs av innehållet*/
-
+/*--------WRAPPER--------*/
 #wrapper {
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
@@ -46,6 +46,7 @@ body {
     margin: 5vh 10vw;
 }
 
+/*--------HEADER--------*/
 header h1 {
     color: rgba(255, 255, 255, 0.7);
     font-family: "bungee shade";
@@ -53,16 +54,13 @@ header h1 {
     margin: 2vh;
 }
 
-/* använder justify-content för att centrera min nav horisontellt */
-/* flex-basis anger storleken på ett item. i detta fallet så har vi flex-direction 0 och därför blir flex-basis:0 att man återställer naven
-om man har olika bredd på texten så gör flex-basis att alla texters rutor blir lika stora*/
+/*--------NAV--------*/
 nav {
     display: flex;
     gap: 0.5vh;
     margin: 6vh 2vh;
 }
 
-/* flex-basis gör att alla rutor blir lika stora. Flex-grow gör att alla rutor stretchas ut så mycket dem får plats*/
 nav a {
     text-decoration: none;
     color: black;
@@ -82,9 +80,6 @@ a:hover {
     color: rgba(255, 255, 255, 0.8);
 }
 
-/*lägger in samma color och background-color som i min "a" för att det inte ska byta färg när jag håller musen över den
-lägger till box-shadow för att det ska lysa bakom. sökte på google
-background-attachment bestämmer om bakgrundbilden ska vara fast, scroll osv*/
 nav a:nth-child(2) {
     border: 1px solid white;
     font-family: "barlow condense bold";
@@ -94,17 +89,7 @@ nav a:nth-child(2) {
     box-shadow: 0px 0px 5px #fff;
 }
 
-/* gap anges i container
-anger höjd och bredd i % och då blir det 90% av föräldern (wrapper)
- anger det i procent för att det ska följa med när man krymper och förstorar speciellt om man har mobilverison också
- anger ingen fast höjd eller bredd för innehållet ska styra det*/
-/* Tror inte vi behöver
-main {
-    display: flex;
-    flex-direction: column;
-}
-*/
-
+/*--------MAIN - SECTION--------*/
 section {
     border: 1px solid rgba(255, 255, 255, 0.8);
     margin: 1vh 2vh;
@@ -112,6 +97,7 @@ section {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+/*--------SECTION - TOP-ROW--------*/
 .top-row {
     display: flex;
 
@@ -119,16 +105,12 @@ section {
     padding: 2vh 2vh 0.5vh 2vh;
 }
 
-/* (display:flex 
-   flex-direction: column) 
-   Eventuellt ta bort och istället lägga till margins på p*/
+/*--------CONTENT--------*/
 .content {
     width: 60%;
     color: rgba(255, 255, 255, 0.8);
 }
 
-
-/*anger font-size i vh för att det ska anpassa sig*/
 .content h2 {
     margin: 0;
     font-family: "bungee outline";
@@ -143,15 +125,15 @@ section {
     margin-bottom: 6vh;
 }
 
+.content p:first-of-type {
+    margin-bottom: 0;
+}
+
 .content ul {
     margin-top: 0;
     margin-bottom: 6vh;
 
     list-style-type: none;
-}
-
-.content p:first-of-type {
-    margin-bottom: 0;
 }
 
 .content ul,
@@ -160,6 +142,7 @@ section {
     font-size: 2vh;
 }
 
+/*-------- ALBUM --------*/
 .album {
     width: 40%;
     display: flex;
@@ -167,6 +150,7 @@ section {
     gap: 1vh;
 }
 
+/*-------- IMGAGE - CONTAINER --------*/
 .img-container {
     position: relative;
 
@@ -174,7 +158,6 @@ section {
     height: 100%;
 }
 
-/*100% av 40% (bredden av sin förälder) vilket gör att den även blir proportionelig, annars hade den blivit jätteinzoomad*/
 .album img {
     width: 100%;
     height: 100%;
@@ -197,14 +180,12 @@ section {
     opacity: 0;
 }
 
+/*-------- LIST-BOX --------*/
 .list-box {
     display: flex;
     gap: 1vh;
 }
 
-/*flexbasis gör att dem två gula boxarna blir lika stora oavsett innehåll.
-Flex-basis läggs alltid på barnet
-flex-grow för att ta ut 100% av sin förälders bredd*/
 .list-box ol {
     background-color: #eecb00;
     color: #bc559a;
@@ -240,7 +221,7 @@ main> :last-child .list-box ol {
     color: #fff;
 }
 
-/* börjar med bottom-row och gör den till en grid*/
+/*-------- BOTTOM-ROW --------*/
 .bottom-row {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -259,9 +240,10 @@ main> :last-child .list-box ol {
 
     display: flex;
     align-items: center;
-    padding: 1vw;
+    padding: 1vw 2vw;
 }
 
+/*-------- BOTTOM-ROW - 1--------*/
 .bottom-row p:first-child {
     background-color: #bc559a;
     color: #ddbc00;
@@ -280,7 +262,6 @@ main> :last-child .list-box ol {
     border-radius: 10px 10px 10px 0;
 }
 
-/* behöver inte height eftersom den ska få plats i gridens grid men width för att den ska ta upp den fulla bredden*/
 .bottom-row img {
     grid-column: 5;
     grid-row: 1;
@@ -309,7 +290,7 @@ main> :last-child .list-box ol {
     border-radius: 10px 10px 0 10px;
 }
 
-/*Bottom Section 2*/
+/*-------- BOTTOM-ROW - 2 --------*/
 main> :last-child .bottom-row p:first-child {
     background-color: #faddac;
     color: #129acf;
@@ -349,6 +330,7 @@ main> :last-child .bottom-row p:last-child {
     border-radius: 10px 10px 0 10px;
 }
 
+/*-------- FOOTER --------*/
 footer {
     padding: 2vh;
 }
@@ -360,10 +342,9 @@ footer p {
     margin: 5vh 0 0 0;
 }
 
-/*----------Media Queries--------*/
-/*--------Mobil version------*/
+/*---------- MEDIA QUERIES --------*/
+/*-------- MOBILVERISION <500px ------*/
 @media (max-width:500px) {
-
     body {
         background-image: url(../sidan/images/jimihendrix_mobileversion.jpeg);
     }
@@ -383,7 +364,6 @@ footer p {
 
     .top-row {
         flex-direction: column-reverse;
-
     }
 
     .content,
@@ -391,7 +371,20 @@ footer p {
         width: 100%;
     }
 
-    .album img {
+    .content h2 {
+        font-size: 7vw;
+    }
+
+    .content h3 {
+        font-size: 5vw;
+    }
+
+    .content ul,
+    .content p {
+        font-size: 4vw;
+    }
+
+    .img-container img {
         border-radius: 10px 0 0 10px;
     }
 
@@ -408,22 +401,14 @@ footer p {
         font-size: 4vw;
     }
 
-    .content h2 {
-        font-size: 7vw;
-    }
-
-    .content h3 {
-        font-size: 5vw;
-    }
-
-    .content ul,
-    .content p {
-        font-size: 4vw;
-    }
-
     .bottom-row {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
+    }
+
+    .bottom-row p {
+        font-size: 3vw;
+        padding: 2vw;
     }
 
     .bottom-row p:first-child {
@@ -451,12 +436,6 @@ footer p {
         grid-row: 2;
     }
 
-    .bottom-row p {
-        font-size: 3vw;
-        padding: 2vw;
-    }
-
-    /*Bottom Section 2*/
     main> :last-child .bottom-row p:first-child {
         grid-column: 1/ span 2;
         grid-row: 1;
@@ -488,6 +467,7 @@ footer p {
 
 }
 
+/*-------- DESKTOP 800px-900px ------*/
 @media (min-width:800px) and (max-width:900px) {
     header h1 {
         font-size: 63px;
@@ -513,8 +493,7 @@ footer p {
     }
 }
 
-
-/*------desktop version-------*/
+/*------ DESKTOP 900px-1200px -------*/
 @media (min-width:900px) and (max-width:1200px) {
     header h1 {
         font-size: 7vw;
@@ -540,8 +519,12 @@ footer p {
     }
 }
 
-
+/*-------- DESKTOP >1200px ------*/
 @media (min-width:1200px) {
+    #wrapper {
+        width: 960px;
+    }
+
     header h1 {
         font-size: 84px;
     }
@@ -571,10 +554,6 @@ footer p {
 
     .list-box li {
         font-size: 12px;
-    }
-
-    #wrapper {
-        width: 960px;
     }
 }
 
