@@ -23,8 +23,6 @@
     src: url("../sidan/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Bold.ttf");
 }
 
-/* använder height: 200vh för få scroll, bakgrundsbilder stannar bakom eftersom vi har background-attachment. tar man bort background-attachment så skulle bilden bara vara jätte inzoomad och det blir scroll i bakgrundsbilder*/
-
 body {
     margin: 0;
 
@@ -35,17 +33,17 @@ body {
     background-attachment: fixed;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 /*Heiht:100%; Ta bort height gör ingen skillnad. Höjden styrs av innehållet*/
 
 #wrapper {
     background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
 
     margin: 5vh 10vw;
-    border-radius: 10px;
 }
 
 header h1 {
@@ -127,9 +125,6 @@ section {
 .content {
     width: 60%;
     color: rgba(255, 255, 255, 0.8);
-
-    display: flex;
-    flex-direction: column;
 }
 
 
@@ -145,10 +140,13 @@ section {
     font-size: 3vh;
 
     margin-top: 0;
+    margin-bottom: 6vh;
 }
 
 .content ul {
     margin-top: 0;
+    margin-bottom: 6vh;
+
     list-style-type: none;
 }
 
@@ -159,7 +157,7 @@ section {
 .content ul,
 .content p {
     font-family: "barlow condense light";
-    font-size: 2.5vh;
+    font-size: 2vh;
 }
 
 .album {
@@ -215,14 +213,13 @@ flex-grow för att ta ut 100% av sin förälders bredd*/
     flex-basis: 0;
     flex-grow: 1;
 
-    font-size: 1vw;
-
     margin: 0;
     padding: 1vw;
 }
 
 .list-box li {
     margin-left: 1vw;
+    font-size: 1vw;
 }
 
 .list-box h4 {
@@ -258,6 +255,7 @@ main> :last-child .list-box ol {
 
     font-size: 1.5vw;
     font-family: "barlow condense light";
+    font-weight: bolder;
 
     display: flex;
     align-items: center;
@@ -363,31 +361,221 @@ footer p {
 }
 
 /*----------Media Queries--------*/
-@media (max-width:600px) {
+/*--------Mobil version------*/
+@media (max-width:500px) {
+
+    body {
+        background-image: url(../sidan/images/jimihendrix_mobileversion.jpeg);
+    }
+
+    #wrapper {
+        margin: 0;
+    }
+
+    header h1 {
+        text-align: center;
+        font-size: 15vw;
+    }
+
+    nav a {
+        font-size: 3vw;
+    }
+
+    .top-row {
+        flex-direction: column-reverse;
+
+    }
+
+    .content,
+    .album {
+        width: 100%;
+    }
+
+    .album img {
+        border-radius: 10px 0 0 10px;
+    }
+
+    .list-box ol {
+        padding: 3vw;
+    }
+
+    .list-box li {
+        margin-left: 2.5vw;
+        font-size: 3vw;
+    }
+
+    .list-box h4 {
+        font-size: 4vw;
+    }
+
+    .content h2 {
+        font-size: 7vw;
+    }
+
+    .content h3 {
+        font-size: 5vw;
+    }
+
+    .content ul,
+    .content p {
+        font-size: 4vw;
+    }
+
+    .bottom-row {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .bottom-row p:first-child {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .bottom-row p:nth-child(2) {
+        grid-column: 2 / span 2;
+        grid-row: 1;
+    }
+
+    .bottom-row img {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .bottom-row p:nth-child(4) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .bottom-row p:nth-child(5) {
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    .bottom-row p {
+        font-size: 3vw;
+        padding: 2vw;
+    }
+
+    /*Bottom Section 2*/
+    main> :last-child .bottom-row p:first-child {
+        grid-column: 1/ span 2;
+        grid-row: 1;
+    }
+
+    main> :last-child .bottom-row p:nth-child(2) {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    main> :last-child .bottom-row img {
+        grid-column: 1/ span 2;
+        grid-row: 2;
+    }
+
+    main> :last-child .bottom-row p:nth-child(4) {
+        grid-column: 1/span 2;
+        grid-row: 2;
+    }
+
+    main> :last-child .bottom-row p:last-child {
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    footer {
+        font-size: 4vw;
+    }
+
+}
+
+@media (min-width:800px) and (max-width:900px) {
+    header h1 {
+        font-size: 63px;
+    }
+
+    nav a {
+        font-size: 18px;
+    }
+
+    .content h2 {
+        font-size: 22px;
+    }
+
+    .content h3 {
+        font-size: 16px;
+    }
+
+    .content ul,
+    .content p,
+    .bottom-row p,
+    footer p {
+        font-size: 12px;
+    }
+}
+
+
+/*------desktop version-------*/
+@media (min-width:900px) and (max-width:1200px) {
     header h1 {
         font-size: 7vw;
     }
 
+    nav a {
+        font-size: 2vw;
+    }
+
     .content h2 {
-        font-size: 3vw;
+        font-size: 2.4vw;
+    }
+
+    .content h3 {
+        font-size: 1.7vw;
+    }
+
+    .content ul,
+    .content p,
+    .bottom-row p,
+    footer p {
+        font-size: 1.3vw;
     }
 }
 
-/*
-main section div.bottom-row img {
-    height: 100%;
-}
-.list-box ol {
-    margin: 0;???hade vi det innan?
-    padding:1vw;
-}
-.album li {
-    margin-left: 1vw;
-}
-.album ol h4 {
-   margin:0    ( margin-top: 0; margin-bottom 0;)
+
+@media (min-width:1200px) {
+    header h1 {
+        font-size: 84px;
+    }
+
+    nav a {
+        font-size: 24px;
+    }
+
+    .content h2 {
+        font-size: 29px;
+    }
+
+    .content h3 {
+        font-size: 20px;
+    }
+
+    .content ul,
+    .content p,
+    .bottom-row p,
+    footer p {
+        font-size: 15.5px;
+    }
+
+    .list-box h4 {
+        font-size: 18px;
+    }
+
+    .list-box li {
+        font-size: 12px;
+    }
+
+    #wrapper {
+        width: 960px;
+    }
 }
 
-
-Kan man lägga en h4 innuti en ol?
-*/
+/*kan man lägga en h4 innuti en ol?*/
